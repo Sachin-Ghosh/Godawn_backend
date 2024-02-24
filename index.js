@@ -1,0 +1,78 @@
+var express = require('express');
+const cors = require('cors'); // Import the cors middleware
+
+var app = express();
+
+require('dotenv').config(); // Load environment variables from .env file
+
+
+
+
+// routes import 
+const userRoutes = require('./routes/userRoute');
+
+const authenticateToken = require('./middleware/authMiddleware');
+
+
+
+
+// connecting to database
+const connectDB = require('./db');
+connectDB();
+
+
+
+
+
+
+
+// middleware 
+app.use(cors());
+// this code is for accepting data in port request
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// app.use(authenticateToken); // authentication 
+
+
+
+
+
+
+
+
+
+
+// image routes 
+
+
+
+
+// all the routes 
+app.use('/api/users', userRoutes);
+
+// admin routes
+
+// app.use(adminBroApp);
+
+
+
+
+
+
+
+
+app.get('/', function(req, res){
+   res.send("Hello world!");
+});
+
+
+
+// app.use(admin.options.rootPath, adminRouter)
+
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, "0.0.0.0" ,()=> {
+    console.log(`Server is running on http://localhost:${port}`);
+});
