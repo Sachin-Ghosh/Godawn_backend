@@ -5,7 +5,8 @@ var app = express();
 
 require('dotenv').config(); // Load environment variables from .env file
 
-
+// Import the cron job module
+require('./cronJob');
 
 
 // routes import 
@@ -33,18 +34,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(authenticateToken); // authentication 
-
-
-
-
-
-
-
-
-
-
-// image routes 
-
 
 
 
