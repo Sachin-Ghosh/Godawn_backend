@@ -11,6 +11,8 @@ require('./cronJob');
 
 // routes import 
 const userRoutes = require('./routes/userRoute');
+const invoiceRoutes = require('./routes/invoiceRoute');
+const productRoutes = require("./routes/productRoute");
 
 const authenticateToken = require('./middleware/authMiddleware');
 
@@ -39,7 +41,8 @@ app.use(bodyParser.json());
 
 // all the routes 
 app.use('/api/users', userRoutes);
-
+app.use('/api/invoices', invoiceRoutes);
+app.use('/api/inventory',productRoutes);
 // admin routes
 
 // app.use(adminBroApp);
