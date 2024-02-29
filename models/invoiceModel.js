@@ -32,6 +32,8 @@ const invoiceSchema = new mongoose.Schema({
     default: 'Pending',
   },
   // Add more fields as needed
+  created: { type: Date, default: Date.now },
+  updated: { type: Date, default: Date.now },
 });
 
 // Middleware to calculate totalPrice before saving

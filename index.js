@@ -13,6 +13,7 @@ require('./cronJob');
 const userRoutes = require('./routes/userRoute');
 const invoiceRoutes = require('./routes/invoiceRoute');
 const productRoutes = require("./routes/productRoute");
+const salesRoutes = require("./routes/salesRoute");
 
 const authenticateToken = require('./middleware/authMiddleware');
 
@@ -43,6 +44,7 @@ app.use(bodyParser.json());
 app.use('/api/users', userRoutes);
 app.use('/api/invoices', invoiceRoutes);
 app.use('/api/inventory',productRoutes);
+app.use('/api/sales',salesRoutes);
 // admin routes
 
 // app.use(adminBroApp);
