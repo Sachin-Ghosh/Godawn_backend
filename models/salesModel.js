@@ -4,7 +4,7 @@ const Product = require("./productModel");
 
 const salesSchema = new mongoose.Schema({
 
-  productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },  
+  products: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },  
   buyerName: { type: String, required: true },
   soldQuantity: { type: Number ,required :true},
 //   type: { type: String },

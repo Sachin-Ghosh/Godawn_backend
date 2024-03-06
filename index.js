@@ -14,6 +14,8 @@ const userRoutes = require('./routes/userRoute');
 const invoiceRoutes = require('./routes/invoiceRoute');
 const productRoutes = require("./routes/productRoute");
 const salesRoutes = require("./routes/salesRoute");
+const reportRoutes = require("./routes/reportRoute");
+const qrCodeRoutes = require("./routes/qrCodeRoute")
 
 const authenticateToken = require('./middleware/authMiddleware');
 
@@ -45,6 +47,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/invoices', invoiceRoutes);
 app.use('/api/inventory',productRoutes);
 app.use('/api/sales',salesRoutes);
+app.use('/api/reports',reportRoutes);
+app.use('/api/QRcode', qrCodeRoutes);
 // admin routes
 
 // app.use(adminBroApp);

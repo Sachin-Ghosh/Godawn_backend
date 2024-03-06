@@ -1,7 +1,9 @@
     const mongoose = require('mongoose');
+    const Sales = require('./salesModel')
 
     const productSchema = new mongoose.Schema({
         // productId: { type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true },
+        sales: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Sales' }], // Array of Sales references
 
     type: {
         type: String,
@@ -19,7 +21,7 @@
         type: Number,
         required: true,
     },
-    quantity: {
+    quantity: {                     
         type: Number,
         required: true,
     },
