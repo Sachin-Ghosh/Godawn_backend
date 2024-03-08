@@ -20,10 +20,24 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  phoneNumber: {
+    type: String,
+    required: true,
+    validate: {
+      validator: function (v) {
+        // Validate that the phone number has exactly 10 digits
+        return /^\d{10}$/.test(v);
+      },
+      message: (props) => `${props.value} is not a valid phone number!`,
+    },
+  },
+  companyName: {
+    type: String,
+    required: true,
+  },
   role: {
     type: String,
-    enum: ['Admin', 'User', 'Manager'], // Define user roles
-    default: 'User',
+    enum: ['Admin', 'User'], // Define user roles
   },
   createdAt: {
     type: Date,
