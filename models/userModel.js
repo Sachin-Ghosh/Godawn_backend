@@ -23,13 +23,13 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true,
-    validate: {
-      validator: function (v) {
-        // Validate that the phone number has exactly 10 digits
-        return /^\d{10}$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid phone number!`,
-    },
+    // validate: {
+    //   validator: function (v) {
+    //     // Validate that the phone number has exactly 10 digits
+    //     return /^\d{10}$/.test(v);
+    //   },
+    //   message: (props) => `${props.value} is not a valid phone number!`,
+    // },
   },
   companyName: {
     type: String,
