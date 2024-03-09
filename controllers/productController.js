@@ -1,7 +1,7 @@
 // const Product = require('../models/productModel');
 const Product = require("../models/productModel");
 const mongoose = require('mongoose');
-const QRCode = require('qrcode');
+// const QRCode = require('qrcode');
 const fs = require('fs');
 const qr = require('qr-image');
 // const RecentActivity = require('../models/recentActivityModel');
@@ -15,7 +15,7 @@ exports.getAllProducts = async (req, res) => {
     const totalCount = await Product.countDocuments();
 
     const products = await Product.find()
-      .sort({ createdAt: -1 }) // Change to your preferred field for sorting
+      .sort({ created: -1 }) // Change to your preferred field for sorting
 
     res.json({ 
       products,
