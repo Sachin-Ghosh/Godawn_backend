@@ -4,8 +4,8 @@ const Invoice = require('../models/invoiceModel');
 // Create new invoice
 exports.createInvoice = async (req, res) => {
   try {
-    const { customerName, productName, quantity, unitPrice, totalPrice, invoiceDate, paymentStatus } = req.body;
-    const invoice = new Invoice({ customerName, productName, quantity, unitPrice, totalPrice, invoiceDate, paymentStatus });
+    const { customerName, productName, quantity, unitPrice, address, date,number, totalPrice, invoiceDate, paymentStatus } = req.body;
+    const invoice = new Invoice({ customerName, productName, quantity, address, number, date, unitPrice, totalPrice, invoiceDate, paymentStatus });
     await invoice.save();
     res.status(201).json({ success: true, invoice });
   } catch (error) {
@@ -17,8 +17,17 @@ exports.createInvoice = async (req, res) => {
 // Get all invoices
 exports.getAllInvoices = async (req, res) => {
   try {
-    const invoices = await Invoice.find();
-    res.status(200).json({ success: true, invoices });
+    // const invoices = await Invoice.find();
+    // res.status(200).json({ success: true, invoices });
+    const totalCount = await Invoice.countDocuments();
+
+    const invoices = await Invoice.find()
+      .sort({ created: -1 }) // Change to your preferred field for sorting
+
+    res.json({ 
+      invoices,
+      totalCount,
+    });
   } catch (error) {
     console.error('Error fetching invoices:', error);
     res.status(500).json({ success: false, message: 'Internal Server Error' });
@@ -44,10 +53,10 @@ exports.getInvoiceById = async (req, res) => {
 exports.updateInvoice = async (req, res) => {
   try {
     const { id } = req.params;
-    const { customerName, productName, quantity, unitPrice, totalPrice, invoiceDate, paymentStatus } = req.body;
+    const { customerName, productName, quantity, address, date, number,unitPrice, totalPrice, invoiceDate, paymentStatus } = req.body;
     const updatedInvoice = await Invoice.findByIdAndUpdate(
       id,
-      { customerName, productName, quantity, unitPrice, totalPrice, invoiceDate, paymentStatus },
+      { customerName, productName, quantity, address, date, unitPrice, number, totalPrice, invoiceDate, paymentStatus },
       { new: true }
     );
     if (!updatedInvoice) {

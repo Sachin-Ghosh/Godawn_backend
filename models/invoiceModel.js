@@ -10,8 +10,16 @@ const invoiceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  address: {
+    type: String,
+    required: true,
+  },
   quantity: {
     type: Number,
+    required: true,
+  },
+  number: {
+    type: String,
     required: true,
   },
   unitPrice: {
@@ -25,6 +33,10 @@ const invoiceSchema = new mongoose.Schema({
   invoiceDate: {
     type: Date,
     default: Date.now,
+  },
+  date: {
+    type: Date,
+    required: true,
   },
   paymentStatus: {
     type: String,
